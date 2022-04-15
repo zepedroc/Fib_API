@@ -51,6 +51,6 @@ router.get('/requests', (req, res) => {
 });
 
 app.use('/.netlify/functions/api', router);
-app.use(cors());
+// app.use(cors());
 
 module.exports.handler = serverless(app);
