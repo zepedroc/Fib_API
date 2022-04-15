@@ -49,4 +49,10 @@ router.get('/requests', (req, res) => {
 
 app.use('/.netlify/functions/api', router);
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://dazzling-cajeta-27b8d9.netlify.app/");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 module.exports.handler = serverless(app);
