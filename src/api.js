@@ -45,7 +45,7 @@ router.get('/fibSeqNum/:position', (req, res) => {
  * Router to get all the previous requests
  */
 router.get('/requests', (req, res) => {
-    res.header({ 'Access-Control-Allow-Origin': '*' });
+    res.set('Access-Control-Allow-Origin', '*');
     res.json({ 'requests': previousRequests });
 });
 
