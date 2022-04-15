@@ -38,6 +38,7 @@ router.get('/fibSeqNum/:position', (req, res) => {
     // save request data
     previousRequests.push({ positionRequested: req.params.position, result, date: Date.now() })
 
+    res.set('Access-Control-Allow-Origin', '*');
     res.json({ 'fibNum': result });
 });
 
