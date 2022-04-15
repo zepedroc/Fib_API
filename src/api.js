@@ -4,8 +4,6 @@ const serverless = require('serverless-http');
 const app = express();
 const router = express.Router();
 
-const REACT_APP_URL = 'https://dazzling-cajeta-27b8d9.netlify.app/';
-
 let previousRequests = [];
 
 /**
@@ -39,7 +37,7 @@ router.get('/fibSeqNum/:position', (req, res) => {
     // save request data
     previousRequests.push({ positionRequested: req.params.position, result, date: Date.now() })
 
-    res.set('Access-Control-Allow-Origin', REACT_APP_URL);
+    res.set('Access-Control-Allow-Origin', '*');
     res.json({ 'fibNum': result });
 });
 
@@ -47,7 +45,7 @@ router.get('/fibSeqNum/:position', (req, res) => {
  * Router to get all the previous requests
  */
 router.get('/requests', (req, res) => {
-    res.set('Access-Control-Allow-Origin', REACT_APP_URL);
+    res.set('Access-Control-Allow-Origin', '*');
     res.json({ 'requests': previousRequests });
 });
 
