@@ -2,10 +2,8 @@ const express = require('express');
 const serverless = require('serverless-http');
 
 const app = express();
-
 const router = express.Router();
 
-console.log('server file loaded!!!!!');
 /**
  * Method that calculates the Fibonacci Sequence and returns the n'th value of the sequence
  * @param {*} pos 
@@ -29,13 +27,8 @@ const getFibPosition = (pos) => {
 }
 
 router.get('/fibSeqNum/:position', (req, res) => {
-    console.log('Get position:', req.params.position);
     res.json({ 'fibNum': getFibPosition(req.params.position) })
 });
-
-// app.listen(5000, () => {
-//     console.log('Server started!');
-// })
 
 app.use('/.netlify/functions/api', router);
 
