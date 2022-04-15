@@ -3,15 +3,8 @@ const serverless = require('serverless-http');
 
 const app = express();
 const router = express.Router();
-// const mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://localhost/fibonacci_sequence', { useNewUrlParser: true });
-
-// const db = mongoose.connection;
-// db.on('error', (error) => console.error(error));
-// db.once('open', () => console.log('Connected to Database!'));
-
-let requests = [];
+let previousRequests = [];
 
 /**
  * Method that calculates the Fibonacci Sequence and returns the n'th value of the sequence
@@ -35,17 +28,25 @@ const getFibPosition = (pos) => {
     return fibArray[pos - 1];
 }
 
+/**
+ * Router to get the value of a specific Fibonacci Sequence position
+ */
 router.get('/fibSeqNum/:position', (req, res) => {
+    const result = getFibPosition(req.params.position);
+
     // save request data
-    requests.push({ numberRequested: req.params.position, date: Date.now() })
-    res.json({ 'fibNum': getFibPosition(req.params.position) })
+    previousRequests.push({ positionRequested: req.params.position, result, date: Date.now() })
+
+    res.json({ 'fibNum': result });
 });
 
+/**
+ * Router to get all the previous requests
+ */
 router.get('/requests', (req, res) => {
-    res.json({ 'requests': requests })
+    res.json({ 'requests': previousRequests })
 });
 
 app.use('/.netlify/functions/api', router);
-// app.use(express.json());
 
 module.exports.handler = serverless(app);
