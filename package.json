@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/zepedroc/Fib_API#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.3",
     "netlify-lambda": "^2.0.15",
     "serverless-http": "^3.0.1"
