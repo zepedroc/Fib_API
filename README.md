@@ -1,9 +1,5 @@
 # Fibonacci_API
 
-API running on https://wondrous-dango-ab8623.netlify.app
-
-API hosted on Netlify because of its free services and good recomendations online.
-
 ## Requests
 
 Two endpoints:
@@ -14,6 +10,3 @@ Two endpoints:
 
 Set Access-Control-Allow-Origin to allow cross origin requests.
 
-## Persist Requests Data
-
-Considered using MongoDB for storing the requests data but at the same time thought I was over-doing it.
