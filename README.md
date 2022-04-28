@@ -1,4 +1,4 @@
-# Fib_API
+# Fibonacci_API
 
 API running on https://wondrous-dango-ab8623.netlify.app
 
